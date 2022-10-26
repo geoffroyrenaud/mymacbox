@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Install software
+      community.general.homebrew_cask:
+        name: "{{ item }}"
+      with_items:
+        - docker
+        - google-chrome
+        - iterm2
+        - keepassxc
+        - visual-studio-code
+        - microsoft-teams
+        - font-powerline-symbols
+        - font-meslo-for-powerline
+
+    - name: Install software
+      community.general.homebrew:
+        name: "{{ item }}"
+      with_items:
+        - go
+        - jq
+        - htop
+        - terraform
+
+    - name: Brew upgrade all
+      community.general.homebrew:
+        update_homebrew: true
+        upgrade_all: true
+        
